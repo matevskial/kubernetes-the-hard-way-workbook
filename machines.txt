@@ -1,0 +1,2 @@
+192.168.0.27 server.kubernetes.local matevskilabs xx server
+192.168.1.27 node-0.kubernetes.local matevskilabs-peroslaptop 10.200.0.0/24 node
