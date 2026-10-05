@@ -11,6 +11,9 @@ set -euo pipefail
 echo "==> Install command line utilities"
 sudo dnf -y install wget curl vim openssl git
 
+echo "==> Append hostnames of cluster machines"
+cat hosts-to-append.txt | sudo tee -a /etc/hosts > /dev/null
+
 echo "==> Sync GitHub repository"
 if [[ ! -d kubernetes-the-hard-way/.git ]]; then
   git clone --depth 1 \
