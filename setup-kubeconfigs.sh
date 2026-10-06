@@ -22,7 +22,7 @@ while read IP FQDN HOST SUBNET CLUSTER_ROLE; do
 done < machines.txt
 
 if [[ -z "${serverHost}" ]]; then
-    echo "serverHost of kubernetes cluster not determined, is machines.txt set right"
+    echo "serverHost of kubernetes cluster not determined, is machines.txt set right?"
     exit 1
 fi
 

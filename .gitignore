@@ -4,3 +4,4 @@ downloads/**
 kubeconfigs/**
 encryption-config-tmp/**
 certificates-distributed/**
+configs/**

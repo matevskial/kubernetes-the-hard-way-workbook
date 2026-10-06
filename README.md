@@ -98,3 +98,15 @@ https://www.youtube.com/watch?v=6v_BDHIgOY8
 
 Understanding Kubernetes Networking in 30 Minutes - Ricardo Katz & James Strong
 https://www.youtube.com/watch?v=Mj04QOqAaJ8
+
+Disable zram swap on fedora
+
+```bash
+root@host:~# swapoff -a
+root@host:~# systemctl mask dev-zram0.swap 
+Created symlink '/etc/systemd/system/dev-zram0.swap' → '/dev/null'.
+root@host:~# reboot
+root@host:~# Read from remote host host: Connection reset by peer
+Connection to host closed.
+client_loop: send disconnect: Broken pipe
+```
