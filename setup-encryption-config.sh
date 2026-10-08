@@ -5,6 +5,8 @@
 
 # sets kubernetes encryption at rest for kubernetes resources(secrets, etc)
 
+set -euo pipefail
+
 encryptionConfigTmpDir="./encryption-config-tmp"
 
 mkdir -p $encryptionConfigTmpDir

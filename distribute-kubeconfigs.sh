@@ -5,6 +5,8 @@
 # - jumpbox should have basic prerequisites setup
 # - jumpbox should already have hosts set up
 
+set -euo pipefail
+
 baseKubeconfigsDir="./kubeconfigs"
 
 # copy kubeconfigs to nodes: kubeconfigs for kubelet and kube-proxy

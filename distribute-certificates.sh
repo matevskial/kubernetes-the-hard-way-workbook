@@ -5,6 +5,8 @@
 # - jumpbox should have basic prerequisites setup
 # - jumpbox should already have hosts set up
 
+set -euo pipefail
+
 baseCertificatesDir="./certificates"
 
 while read IP FQDN HOST SUBNET CLUSTER_ROLE; do

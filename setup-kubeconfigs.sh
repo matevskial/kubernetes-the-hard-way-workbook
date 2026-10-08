@@ -5,6 +5,8 @@
 
 # set up the certificate authority(CA) that will be used to generate all certificates
 
+set -euo pipefail
+
 baseCertificatesDir="./certificates"
 baseKubeconfigsDir="./kubeconfigs"
 
