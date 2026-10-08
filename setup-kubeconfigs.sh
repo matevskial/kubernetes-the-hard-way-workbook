@@ -17,7 +17,7 @@ ensureBaseKubeconfigsDirExists() {
 ensureBaseKubeconfigsDirExists
 
 serverHost=""
-while read IP FQDN HOST SUBNET CLUSTER_ROLE; do
+while read IP FQDN HOST SUBNET CLUSTER_ROLE OS ARCH; do
     if [[ "${CLUSTER_ROLE}" == "server" ]]; then
         serverHost=$FQDN
     fi
@@ -29,7 +29,7 @@ if [[ -z "${serverHost}" ]]; then
 fi
 
 # set up kubeconfigs for nodes
-while read IP FQDN HOST SUBNET CLUSTER_ROLE; do
+while read IP FQDN HOST SUBNET CLUSTER_ROLE OS ARCH; do
     if [[ "${CLUSTER_ROLE}" == "node" ]]; then
         kubectl config set-cluster kubernetes-the-hard-way \
     --certificate-authority="$baseCertificatesDir/"ca.crt \

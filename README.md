@@ -110,3 +110,19 @@ root@host:~# Read from remote host host: Connection reset by peer
 Connection to host closed.
 client_loop: send disconnect: Broken pipe
 ```
+
+Disable zram swap on alpine
+
+```bash
+root@host:~# swapon --show
+root@host:~# rc-service zram-init stop
+root@host:~# rc-update del zram-init
+```
+
+Disable zram swap on alpine postmarket os
+
+```bash
+root@host:~# swapon --show
+root@host:~# rc-service postmarketos-zram-swap stop
+root@host:~# rc-update del postmarketos-zram-swap
+```

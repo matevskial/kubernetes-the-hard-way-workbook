@@ -1,6 +1,7 @@
 kubernetes-the-hard-way
 certificates/**
 downloads/**
+downloads-*/**
 kubeconfigs/**
 encryption-config-tmp/**
 certificates-distributed/**

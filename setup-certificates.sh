@@ -16,7 +16,7 @@ ensureBaseCertificatesDirExists() {
 ensureBaseCertificatesDirExists
 
 # private key of CA
-openssl genrsa -out "$baseCertificatesDir/"ca.key 4096
+# openssl genrsa -out "$baseCertificatesDir/"ca.key 4096
 
 # CA certificate
 openssl req -x509 -new -sha512 -noenc \
@@ -25,7 +25,7 @@ openssl req -x509 -new -sha512 -noenc \
     -out "$baseCertificatesDir/"ca.crt
 
 certs=(
-  "admin" "matevskilabs-peroslaptop"
+  "admin" "matevskilabs-peroslaptop" "matevskilabs-alioth"
   "kube-proxy" "kube-scheduler"
   "kube-controller-manager"
   "kube-api-server"
@@ -51,4 +51,3 @@ for i in ${certs[*]}; do
     -CAcreateserial \
     -out "$baseCertificatesDir/""${i}.crt"
 done
-

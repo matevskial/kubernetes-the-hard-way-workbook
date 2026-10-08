@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+
+# suffixed with -custom just in case there is alpine package that ships this openrc init.d file
+
+name="kube-proxy"
+description="kube-proxy installed by following kubernetes-the-hard-way"
+
+command="/usr/local/bin/kube-proxy"
+command_args="--config=/var/lib/kube-proxy/kube-proxy-config.yaml"
+
+supervisor=supervise-daemon
+supervisor=supervise-daemon
+respawn_delay=5
+respawn_max=0 # unlimited

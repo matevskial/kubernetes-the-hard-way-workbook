@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+
+# suffixed with -custom because there is alpine package that ships containerd openrc init.d file
+
+name="containerd"
+description="Containerd installed by following kubernetes-the-hard-way"
+
+command="/bin/containerd"
+command_args=""
+
+supervisor=supervise-daemon
+respawn_delay=5
+respawn_max=0 # unlimited
+
+rc_ulimit="${ulimit_opts:--c unlimited -n 1048576 -u unlimited}"
+
+depend() {
+    need sysfs cgroups
+    after net # because  the analog systemd unit file also has After=network.target
+}
+
+start_pre() {
+    /sbin/modprobe overlay
+}
+
+start_post() {
+    echo -999 > /proc/$(cat /run/supervise-containerd-custom.pid)/oom_score_adj   
+}

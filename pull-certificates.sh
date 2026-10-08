@@ -19,7 +19,7 @@ ensureBaseCertificatesDirExists() {
 ensureBaseCertificatesDirExists
 
 serverHost=""
-while read IP FQDN HOST SUBNET CLUSTER_ROLE; do
+while read IP FQDN HOST SUBNET CLUSTER_ROLE OS ARCH; do
     if [[ "${CLUSTER_ROLE}" == "server" ]]; then
         serverHost=$FQDN
     fi
@@ -33,4 +33,4 @@ fi
 # pull ca cert
 
 scp -P 1703 root@${serverHost}:/var/lib/kubernetes/ca.crt "$baseCertificatesDir/"
-
+scp -P 1703 root@${serverHost}:/var/lib/kubernetes/ca.key "$baseCertificatesDir/"

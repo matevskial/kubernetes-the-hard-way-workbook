@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+
+# suffixed with -custom just in case there is alpine package that ships this openrc init.d file
+
+name="kubelet"
+description="kubelet installed by following kubernetes-the-hard-way"
+
+command="/usr/local/bin/kubelet"
+command_args="--config=/var/lib/kubelet/kubelet-config.yaml --kubeconfig=/var/lib/kubelet/kubeconfig --v=2"
+
+supervisor=supervise-daemon
+supervisor=supervise-daemon
+respawn_delay=5
+respawn_max=0 # unlimited
+
+depend() {
+    need containerd-custom
+    after containerd-custom
+}

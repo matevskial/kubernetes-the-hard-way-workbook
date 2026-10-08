@@ -10,9 +10,10 @@ set -euo pipefail
 baseKubeconfigsDir="./kubeconfigs"
 
 # copy kubeconfigs to nodes: kubeconfigs for kubelet and kube-proxy
-while read IP FQDN HOST SUBNET CLUSTER_ROLE; do
+while read IP FQDN HOST SUBNET CLUSTER_ROLE OS ARCH; do
     if [[ "${CLUSTER_ROLE}" == "node" ]]; then
-        ssh root@${HOST} -p 1703 "mkdir -p /var/lib/{kube-proxy,kubelet}"
+        ssh root@${HOST} -p 1703 "mkdir -p /var/lib/kube-proxy"
+        ssh root@${HOST} -p 1703 "mkdir -p /var/lib/kubelet"
 
         scp -P 1703 "$baseKubeconfigsDir/"kube-proxy.kubeconfig \
             root@${HOST}:/var/lib/kube-proxy/kubeconfig \
@@ -23,7 +24,7 @@ while read IP FQDN HOST SUBNET CLUSTER_ROLE; do
 done < machines.txt
 
 # copy kubeconfigs to server: kubeconfigs for admin, kube-controller-manager, kube-scheduler
-while read IP FQDN HOST SUBNET CLUSTER_ROLE; do
+while read IP FQDN HOST SUBNET CLUSTER_ROLE OS ARCH; do
     if [[ "${CLUSTER_ROLE}" == "server" ]]; then
         scp -P 1703 "$baseKubeconfigsDir/"admin.kubeconfig \
             "$baseKubeconfigsDir/"kube-controller-manager.kubeconfig \

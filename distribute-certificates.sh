@@ -9,7 +9,7 @@ set -euo pipefail
 
 baseCertificatesDir="./certificates"
 
-while read IP FQDN HOST SUBNET CLUSTER_ROLE; do
+while read IP FQDN HOST SUBNET CLUSTER_ROLE OS ARCH; do
     if [[ "${CLUSTER_ROLE}" == "server" ]]; then
 	   scp -P 1703 "$baseCertificatesDir/"ca.key "$baseCertificatesDir/"ca.key "$baseCertificatesDir/"ca.crt "$baseCertificatesDir/"kube-api-server.key "$baseCertificatesDir/"kube-api-server.crt "$baseCertificatesDir/"service-accounts.key "$baseCertificatesDir/"service-accounts.crt root@${HOST}:~/
    else

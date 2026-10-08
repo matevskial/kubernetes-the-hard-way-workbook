@@ -1,3 +1,4 @@
 # Added when following Kubernetes The Hard Way
 192.168.0.27 server.kubernetes.local matevskilabs
 192.168.1.27 node-0.kubernetes.local matevskilabs-peroslaptop
+192.168.1.28 node-1.kubernetes.local matevskilabs-alioth
