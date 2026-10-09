@@ -6,7 +6,7 @@
 # - jumpbox should already have hosts set up
 
 # assumtions
-# - fedora server
+# - fedora server or alpine musl openrc
 # - swap is zram
 
 set -euo pipefail
